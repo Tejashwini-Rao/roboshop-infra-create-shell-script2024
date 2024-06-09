@@ -1,6 +1,6 @@
 #### Change these values ###
-ZONE_ID="Z05563911B5TPM0CPTZND"
-SG_NAME="allow-all"
+ZONE_ID="Z00593593U4GYH63O0YNE"
+SG_NAME="Allow-All"
 ENV="dev"
 #############################
 
@@ -13,7 +13,7 @@ create_ec2() {
       --tag-specifications "ResourceType=instance,Tags=[{Key=Name,Value=${COMPONENT}}, {Key=Monitor,Value=Yes}]"  \
       --instance-market-options "MarketType=spot,SpotOptions={SpotInstanceType=persistent,InstanceInterruptionBehavior=stop}"\
       --security-group-ids ${SGID} \
-      --iam-instance-profile Name=SecretManager_Role_for_RoboShop_Nodes \
+      --iam-instance-profile Name=SecretManager_role_Roboshop \
       | jq '.Instances[].PrivateIpAddress' | sed -e 's/"//g')
 
   sed -e "s/IPADDRESS/${PRIVATE_IP}/" -e "s/COMPONENT/${COMPONENT}/" route53.json >/tmp/record.json
@@ -21,7 +21,7 @@ create_ec2() {
 }
 
 #AMI_ID=$(aws ec2 describe-images --filters "Name=name,Values=Centos-7-DevOps-Practice" | jq '.Images[].ImageId' | sed -e 's/"//g')
-AMI_ID=ami-07ef4d849950da0b3
+AMI_ID=ami-05e3db669169a67c8
 SGID=$(aws ec2 describe-security-groups --filters Name=group-name,Values=${SG_NAME} | jq  '.SecurityGroups[].GroupId' | sed -e 's/"//g')
 
 
