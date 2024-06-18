@@ -1,7 +1,8 @@
 ##### Change these values ###
 ZONE_ID="Z00593593U4GYH63O0YNE"
 SG_NAME="Allow-All"
-ENV="dev"###################
+ENV="dev"
+###################
 
 
 create_ec2() {
