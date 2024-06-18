@@ -1,7 +1,12 @@
 #### Change these values ###
-ZONE_ID="Z00593593U4GYH63O0YNE"
+#ZONE_ID="Z00593593U4GYH63O0YNE"
+#SG_NAME="Allow-All"
+#ENV="dev"
+
+ZONE_ID="Z03788192ZVG1DUTPEU8X"
+DOMAIN="devopst77.online"
 SG_NAME="Allow-All"
-ENV="dev"
+env=dev
 #############################
 
 
