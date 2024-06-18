@@ -1,62 +1,62 @@
-##- name: Create all params
-##  hosts: localhost
-##  tasks:
-##    - name: Install botocore and boto3
-##      ansible.builtin.pip:
-##        name: "{{item}}"
-##        executable: pip3
-##      loop:
-#        - botocore
-#        - boto3
-#    - name: Create Parameter.
-#      ansible.builtin.shell: aws ssm put-parameter --name "{{item.key}}" --type "String" --value "{{item.value}}" --overwrite
+#- name: Create all params
+#  hosts: localhost
+#  tasks:
+#    - name: Install botocore and boto3
+#      ansible.builtin.pip:
+#        name: "{{item}}"
+#        executable: pip3
 #      loop:
-#        - {key: "mutable.cart.dev.CATALOGUE_HOST", value: "catalogue-dev.roboshop.internal"}
-#        - {key: "mutable.cart.dev.REDIS_HOST", value: "redis-dev.roboshop.internal"}
-#        - {key: "mutable.catalogue.dev.MONGO", value: "true"}
-#        - {key: "mutable.catalogue.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.internal:27017/catalogue"}
-#        - {key: "mutable.payment.dev.CART_HOST", value: "cart-dev.roboshop.internal"}
-#        - {key: "mutable.payment.dev.USER_HOST", value: "user-dev.roboshop.internal"}
-#        - {key: "mutable.payment.dev.AMQP_HOST", value: "rabbitmq-dev.roboshop.internal"}
-#        - {key: "mutable.payment.dev.AMQP_USER", value: "roboshop"}
-#        - {key: "mutable.payment.dev.AMQP_PASS", value: "roboshop123"}
-#        - {key: "mutable.mysql.dev.MYSQL_PASSWORD", value: "RoboShop@1"}
-#        - {key: "mutable.rabbitmq.dev.RABBITMQ_PASSWORD", value: "roboshop123"}
-#        - {key: "mutable.shipping.dev.CART_ENDPOINT", value: "cart-dev.roboshop.internal:8080"}
-#        - {key: "mutable.shipping.dev.DB_HOST", value: "mysql-dev.roboshop.internal"}
-#        - {key: "mutable.user.dev.MONGO", value: "true"}
-#        - {key: "mutable.user.dev.REDIS_HOST", value: "redis-dev.roboshop.internal"}
-#        - {key: "mutable.user.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.internal:27017/users"}
-#        -
-
-- name: Create Parameters
-  hosts: localhost
-  connection: local
-  tasks:
-    - name: Create Parameters
-      community.aws.aws_ssm_parameter_store:
-        name: "{{ item.name }}"
-        value: "{{ item.value }}"
-        region: us-east-1
+        - botocore
+        - boto3
+    - name: Create Parameter.
+      ansible.builtin.shell: aws ssm put-parameter --name "{{item.key}}" --type "String" --value "{{item.value}}" --overwrite
       loop:
-        - {name: "dev.cart.REDIS_HOST", value: "redis-dev.devopst77.online" }
-        - {name: "dev.cart.CATALOGUE_HOST", value: "catalogue-dev.devopst77.online" }
-        - {name: "dev.catalogue.MONGO", value: "true" }
-        - {name: "dev.catalogue.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/catalogue" }
-        - {name: "dev.catalogue.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/catalogue" }
-        - {name: "dev.frontend.CATALOGUE_URL", value: "http://catalogue-dev.devopst77.online:80/" }
-        - {name: "dev.frontend.CART_URL", value: "http://cart-dev.devopst77.online:80/" }
-        - {name: "dev.frontend.USER_URL", value: "http://user-dev.devopst77.online:80/" }
-        - {name: "dev.frontend.PAYMENT_URL", value: "http://payment-dev.devopst77.online:80/" }
-        - {name: "dev.frontend.SHIPPING_URL", value: "http://shipping-dev.devopst77.online:80/" }
-        - {name: "dev.payment.CART_HOST", value: "cart-dev.devopst77.online" }
-        - {name: "dev.payment.USER_HOST", value: "user-dev.devopst77.online" }
-        - {name: "dev.payment.CART_PORT", value: "80" }
-        - {name: "dev.payment.USER_PORT", value: "80" }
-        - {name: "dev.payment.AMQP_HOST", value: "rabbitmq-dev.devopst77.online" }
-        - {name: "dev.payment.AMQP_USER", value: "roboshop" }
-        - {name: "dev.shipping.CART_ENDPOINT", value: "cart-dev.devopst77.online:80" }
-        - {name: "dev.shipping.DB_HOST", value: "mysql-dev.devopst77.online" }
-        - {name: "dev.user.MONGO", value: "true" }
-        - {name: "dev.user.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/users" }
-        - {name: "dev.user.REDIS_HOST", value: "redis-dev.devopst77.online" }
+        - {key: "mutable.cart.dev.CATALOGUE_HOST", value: "catalogue-dev.roboshop.internal"}
+        - {key: "mutable.cart.dev.REDIS_HOST", value: "redis-dev.roboshop.internal"}
+        - {key: "mutable.catalogue.dev.MONGO", value: "true"}
+        - {key: "mutable.catalogue.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.internal:27017/catalogue"}
+        - {key: "mutable.payment.dev.CART_HOST", value: "cart-dev.roboshop.internal"}
+        - {key: "mutable.payment.dev.USER_HOST", value: "user-dev.roboshop.internal"}
+        - {key: "mutable.payment.dev.AMQP_HOST", value: "rabbitmq-dev.roboshop.internal"}
+        - {key: "mutable.payment.dev.AMQP_USER", value: "roboshop"}
+        - {key: "mutable.payment.dev.AMQP_PASS", value: "roboshop123"}
+        - {key: "mutable.mysql.dev.MYSQL_PASSWORD", value: "RoboShop@1"}
+        - {key: "mutable.rabbitmq.dev.RABBITMQ_PASSWORD", value: "roboshop123"}
+        - {key: "mutable.shipping.dev.CART_ENDPOINT", value: "cart-dev.roboshop.internal:8080"}
+        - {key: "mutable.shipping.dev.DB_HOST", value: "mysql-dev.roboshop.internal"}
+        - {key: "mutable.user.dev.MONGO", value: "true"}
+        - {key: "mutable.user.dev.REDIS_HOST", value: "redis-dev.roboshop.internal"}
+        - {key: "mutable.user.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.internal:27017/users"}
+        -
+
+#- name: Create Parameters
+#  hosts: localhost
+#  connection: local
+#  tasks:
+#    - name: Create Parameters
+#      community.aws.aws_ssm_parameter_store:
+#        name: "{{ item.name }}"
+#        value: "{{ item.value }}"
+#        region: us-east-1
+#      loop:
+#        - {name: "dev.cart.REDIS_HOST", value: "redis-dev.devopst77.online" }
+#        - {name: "dev.cart.CATALOGUE_HOST", value: "catalogue-dev.devopst77.online" }
+#        - {name: "dev.catalogue.MONGO", value: "true" }
+#        - {name: "dev.catalogue.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/catalogue" }
+#        - {name: "dev.catalogue.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/catalogue" }
+#        - {name: "dev.frontend.CATALOGUE_URL", value: "http://catalogue-dev.devopst77.online:80/" }
+#        - {name: "dev.frontend.CART_URL", value: "http://cart-dev.devopst77.online:80/" }
+#        - {name: "dev.frontend.USER_URL", value: "http://user-dev.devopst77.online:80/" }
+#        - {name: "dev.frontend.PAYMENT_URL", value: "http://payment-dev.devopst77.online:80/" }
+#        - {name: "dev.frontend.SHIPPING_URL", value: "http://shipping-dev.devopst77.online:80/" }
+#        - {name: "dev.payment.CART_HOST", value: "cart-dev.devopst77.online" }
+#        - {name: "dev.payment.USER_HOST", value: "user-dev.devopst77.online" }
+#        - {name: "dev.payment.CART_PORT", value: "80" }
+#        - {name: "dev.payment.USER_PORT", value: "80" }
+#        - {name: "dev.payment.AMQP_HOST", value: "rabbitmq-dev.devopst77.online" }
+#        - {name: "dev.payment.AMQP_USER", value: "roboshop" }
+#        - {name: "dev.shipping.CART_ENDPOINT", value: "cart-dev.devopst77.online:80" }
+#        - {name: "dev.shipping.DB_HOST", value: "mysql-dev.devopst77.online" }
+#        - {name: "dev.user.MONGO", value: "true" }
+#        - {name: "dev.user.MONGO_URL", value: "mongodb://mongodb-dev.devopst77.online:27017/users" }
+#        - {name: "dev.user.REDIS_HOST", value: "redis-dev.devopst77.online" }
