@@ -27,7 +27,7 @@
         - {key: "mutable.user.dev.MONGO", value: "true"}
         - {key: "mutable.user.dev.REDIS_HOST", value: "redis-dev.roboshop.internal"}
         - {key: "mutable.user.dev.MONGO_URL", value: "mongodb://mongodb-dev.roboshop.internal:27017/users"}
-        -
+        
 
 #- name: Create Parameters
 #  hosts: localhost
