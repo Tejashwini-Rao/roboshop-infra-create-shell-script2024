@@ -70,6 +70,6 @@ fi
 
 
 for COMPONENT in catalogue cart user shipping payment frontend mongodb mysql rabbitmq redis dispatch; do
-  COMPONENT="${COMPONENT}-${env}"
+  COMPONENT="${COMPONENT}${env}"
   create_ec2
 done
