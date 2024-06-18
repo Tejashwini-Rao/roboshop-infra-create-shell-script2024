@@ -6,7 +6,7 @@
 ZONE_ID="Z03788192ZVG1DUTPEU8X"
 DOMAIN="devopst77.online"
 SG_NAME="Allow-All"
-env=dev
+ENV=dev
 #############################
 
 
